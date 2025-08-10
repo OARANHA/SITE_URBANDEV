@@ -71,6 +71,7 @@ import { IdentityManager } from '../IdentityManager'
 import supabaseAuthRouter from './supabase-auth'
 import supabaseDBRouter from './supabase-db'
 import dashboardRouter from './dashboard'
+import dashboardEnterpriseRouter from './dashboard-enterprise'
 
 const router = express.Router()
 
@@ -143,6 +144,7 @@ router.use('/loginmethod', loginMethodRouter)
 router.use('/supabase-auth', supabaseAuthRouter)
 router.use('/supabase-db', supabaseDBRouter)
 router.use('/dashboard', dashboardRouter)
+router.use('/dashboard-enterprise', dashboardEnterpriseRouter)
 router.use('/logs', IdentityManager.checkFeatureByPlan('feat:logs'), logsRouter)
 router.use('/files', IdentityManager.checkFeatureByPlan('feat:files'), filesRouter)
 

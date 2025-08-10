@@ -237,6 +237,37 @@ class DashboardApi {
         }
         return colors[type] || 'default'
     }
+
+    // Enterprise Dashboard Methods
+    async getEnterpriseStats() {
+        try {
+            const response = await this.api.get('/enterprise/stats')
+            return response.data.data
+        } catch (error) {
+            console.error('Error fetching enterprise stats:', error)
+            throw error
+        }
+    }
+
+    async getTopWorkspaces(limit = 10) {
+        try {
+            const response = await this.api.get(`/enterprise/top-workspaces?limit=${limit}`)
+            return response.data.data
+        } catch (error) {
+            console.error('Error fetching top workspaces:', error)
+            throw error
+        }
+    }
+
+    async getSSOStats() {
+        try {
+            const response = await this.api.get('/enterprise/sso-stats')
+            return response.data.data
+        } catch (error) {
+            console.error('Error fetching SSO stats:', error)
+            throw error
+        }
+    }
 }
 
 // Export singleton instance
